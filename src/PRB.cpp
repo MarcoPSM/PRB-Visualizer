@@ -1,4 +1,5 @@
 #include "PRB.hpp"
+#include "ChannelManager.hpp"
 
 PRB::PRB(int id, int slot) : id(id), slot(slot) {
     int prbOffsetInTime = 20 * 14 * slot;
@@ -7,7 +8,8 @@ PRB::PRB(int id, int slot) : id(id), slot(slot) {
     for (int i = 0; i < 14*12 ; ++i) {
         prb.emplace_back(i, 
                 i % 14 * 20 + prbOffsetInTime, 
-                i / 14 * 20 + prbOffsetInFrequency);
+                i / 14 * 20 + prbOffsetInFrequency,
+                Channel::PDSCH);
     }
 }
 
@@ -31,6 +33,7 @@ void PRB::draw(sf::RenderWindow& window) {
 
             // Desenhar o ID do ResourceElement
             sf::Text idText(std::to_string(resourceElement.getId()), font, 12);
+
             idText.setFillColor(sf::Color::Black);
             idText.setPosition(resourceElement.getPosition());
             window.draw(idText);
