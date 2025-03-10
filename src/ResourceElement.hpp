@@ -6,7 +6,6 @@
 
 class ResourceElement {
     public:
-        //ResourceElement(int id, int x, int y);
         ResourceElement(int id, 
                 int x, 
                 int y, 
@@ -19,7 +18,6 @@ class ResourceElement {
         sf::FloatRect getBounds() const;
         int getSymbol() const;
         int getSubCarrier() const;
-        //sf::Color getColor(Channel channel) const;
         void setChannel(Channel channel);
         void setIQData(float i, float q);
 

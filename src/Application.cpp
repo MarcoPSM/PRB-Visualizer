@@ -1,11 +1,11 @@
 #include "Application.hpp"
 
 Application::Application() : window(sf::VideoMode(800, 600), "PRB Visualizer") {
-    // Inicialização de recursos
+    // Resource initialization 
     if (!font.loadFromFile("Aloevera.ttf")) {
-        // Tratar erro de carregamento da fonte
+        // Error handling
     }
-    // Gerar PRBs
+    // Create PRBs
     //PRB prb(0, 0);
     prbs.emplace_back(0,0);
     prbs.emplace_back(1,0);
@@ -28,7 +28,6 @@ void Application::handleEvents() {
 }
 
 void Application::update() {
-    // Lógica de atualização
     eventManager.updateView(window, view, isDragging, lastMousePosition, moveThreshold);
 }
 

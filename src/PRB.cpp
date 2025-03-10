@@ -4,7 +4,7 @@
 PRB::PRB(int id, int slot) : id(id), slot(slot) {
     int prbOffsetInTime = 20 * 14 * slot;
     int prbOffsetInFrequency = 20 * 12 * id;
-    // Gerar ResourceElements
+    // Create ResourceElements
     for (int i = 0; i < 14*12 ; ++i) {
         prb.emplace_back(i, 
                 i % 14 * 20 + prbOffsetInTime, 
@@ -16,22 +16,22 @@ PRB::PRB(int id, int slot) : id(id), slot(slot) {
 void PRB::draw(sf::RenderWindow& window) {
 
 
-    // Carregar a fonte
+    // Load font
     sf::Font font;
     if (!font.loadFromFile("Aloevera.ttf")) {
-        printf("NAO HA ESTA FONTE");
+        printf("Font not available");
     } 
     sf::View view = window.getDefaultView();
-    // Obter os limites da vista atual
+    // Current view bounderies 
     sf::FloatRect viewBounds(view.getCenter() - view.getSize() / 2.f, view.getSize());
 
     for ( auto& resourceElement : prb) {
-        // Verificar se o ResourceElement está dentro dos limites da vista
+        // Check if ResourceElement is inside the view
         sf::FloatRect resourceElementBounds = resourceElement.getBounds();
         if (viewBounds.intersects(resourceElementBounds)) {
             resourceElement.draw(window);
 
-            // Desenhar o ID do ResourceElement
+            // Draw ResourceElement ID
             sf::Text idText(std::to_string(resourceElement.getId()), font, 12);
 
             idText.setFillColor(sf::Color::Black);

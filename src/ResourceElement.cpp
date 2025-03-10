@@ -1,11 +1,4 @@
 #include "ResourceElement.hpp"
-/*
-ResourceElement::ResourceElement(int id, int x, int y) : id(id), x(x), y(y) {
-    shape.setSize(sf::Vector2f(size-1, size-1));
-    shape.setPosition(x, y);
-    shape.setFillColor(color);
-}
-*/
 
 ResourceElement::ResourceElement(int id, 
                 int x, 
@@ -45,43 +38,6 @@ int ResourceElement::getSymbol() const {
 int ResourceElement::getSubCarrier() const {
     return id / 14;
 }
-
-/*
-sf::Color ResourceElement::getColor(common::DL_Phy_Channel channel) const {
-    switch (channel) {
-        case common::DL_Phy_Channel::PBCH:
-            return sf::Color::Yellow;
-        case common::DL_Phy_Channel::PDCCH:
-            return sf::Color::Green;
-        case common::DL_Phy_Channel::PDSCH:
-            return sf::Color::Blue;
-        case common::DL_Phy_Channel::PSS:
-            return sf::Color(173, 216, 230);
-        case common::DL_Phy_Channel::SSS:
-            return sf::Color(255, 192, 203);
-        case common::DL_Phy_Channel::PBCH_DMRS:
-            return sf::Color(242, 33, 79);
-        case common::DL_Phy_Channel::PDCCH_DMRS:
-            return sf::Color(242, 82, 33);
-        case common::DL_Phy_Channel::PDSCH_DMRS:
-            return sf::Color(242, 33, 33);
-        case common::DL_Phy_Channel::PDSCH_PTRS:
-            return sf::Color(242, 160, 33);
-        case common::DL_Phy_Channel::PRS:
-            return sf::Color(255, 255, 255);
-        case common::DL_Phy_Channel::CSIRS:
-            return sf::Color(173, 216, 230);
-        case common::DL_Phy_Channel::RIMRS:
-            return sf::Color(0, 158, 24);
-        case common::DL_Phy_Channel::INVALID:
-            return sf::Color(125, 125, 125);
-        case common::DL_Phy_Channel::NO_CHANNEL: 
-            return sf::Color(25, 25, 25);
-        default:
-            return sf::Color::Black;
-    }
-}
-*/
 
 void ResourceElement::setChannel(Channel channel) {
     this->channel = channel;
