@@ -19,7 +19,7 @@ class PRB {
         int subCarrierSpacing;
         int const timeSize = 14*20;
         int const freqSize = 12*20;
-        std::vector<ResourceElement> prb;
+        std::vector<ResourceElement> resourceElements;
 };
 
 #endif // PRB_HPP

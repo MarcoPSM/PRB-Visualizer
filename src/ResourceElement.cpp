@@ -1,16 +1,17 @@
 #include "ResourceElement.hpp"
 
 ResourceElement::ResourceElement(int id, 
-                int x, 
-                int y, 
-                Channel channel, 
-                float i, 
-                float q): id(id), x(x), y(y), channel(channel) {
+        int x,
+        int y,
+        Channel channel,
+        float i,
+        float q): id(id), x(x), y(y), channel(channel) {
     iqData[0] = i;
     iqData[1] = q;
+
     shape.setSize(sf::Vector2f(size-1, size-1));
     shape.setPosition(x, y);
-    shape.setFillColor(color);
+    shape.setFillColor(ChannelManager::getColor(channel));
 
 }
 
@@ -41,6 +42,7 @@ int ResourceElement::getSubCarrier() const {
 
 void ResourceElement::setChannel(Channel channel) {
     this->channel = channel;
+    shape.setFillColor(ChannelManager::getColor(channel));
 }
 
 void ResourceElement::setIQData(float i, float q) {
@@ -48,3 +50,6 @@ void ResourceElement::setIQData(float i, float q) {
     this->iqData[1] = q;
 }
 
+std::string ResourceElement::getChannelName() const {
+    return ChannelManager::getName(this->channel);
+}

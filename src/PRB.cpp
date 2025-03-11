@@ -6,11 +6,14 @@ PRB::PRB(int id, int slot) : id(id), slot(slot) {
     int prbOffsetInFrequency = 20 * 12 * id;
     // Create ResourceElements
     for (int i = 0; i < 14*12 ; ++i) {
-        prb.emplace_back(i, 
+        resourceElements.emplace_back(i,
                 i % 14 * 20 + prbOffsetInTime, 
                 i / 14 * 20 + prbOffsetInFrequency,
                 Channel::PDSCH);
     }
+    resourceElements[50].setChannel(Channel::PBCH);
+    resourceElements[40].setChannel(Channel::PDCCH);
+    printf("ID=%d : %s\n", resourceElements[50].getId(), resourceElements[50].getChannelName().c_str());
 }
 
 void PRB::draw(sf::RenderWindow& window) {
@@ -25,7 +28,7 @@ void PRB::draw(sf::RenderWindow& window) {
     // Current view bounderies 
     sf::FloatRect viewBounds(view.getCenter() - view.getSize() / 2.f, view.getSize());
 
-    for ( auto& resourceElement : prb) {
+    for ( auto& resourceElement : resourceElements) {
         // Check if ResourceElement is inside the view
         sf::FloatRect resourceElementBounds = resourceElement.getBounds();
         if (viewBounds.intersects(resourceElementBounds)) {
