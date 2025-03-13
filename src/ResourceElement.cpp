@@ -53,3 +53,8 @@ void ResourceElement::setIQData(float i, float q) {
 std::string ResourceElement::getChannelName() const {
     return ChannelManager::getName(this->channel);
 }
+
+int ResourceElement::getSize() const {
+    return this->size;
+}
+

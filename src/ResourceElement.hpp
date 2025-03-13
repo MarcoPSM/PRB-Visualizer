@@ -13,12 +13,15 @@ class ResourceElement {
                 float i = 0, 
                 float q = 0);
         void draw(sf::RenderWindow& window);
+        
         int getId();
         sf::Vector2f getPosition() const;
         sf::FloatRect getBounds() const;
         int getSymbol() const;
         int getSubCarrier() const;
         std::string getChannelName() const;
+        int getSize() const;
+
         void setChannel(Channel channel);
         void setIQData(float i, float q);
 

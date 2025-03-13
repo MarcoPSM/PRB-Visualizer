@@ -7,7 +7,7 @@
 class PRB {
     public:
         PRB(int id, int slot);
-        void draw(sf::RenderWindow& window);
+        void draw(sf::RenderWindow& window, sf::View& view);
         int getId() const;
         int getSlot() const;
         sf::Vector2f getPosition() const;

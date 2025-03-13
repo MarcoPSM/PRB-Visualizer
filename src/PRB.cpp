@@ -13,10 +13,10 @@ PRB::PRB(int id, int slot) : id(id), slot(slot) {
     }
     resourceElements[50].setChannel(Channel::PBCH);
     resourceElements[40].setChannel(Channel::PDCCH);
-    printf("ID=%d : %s\n", resourceElements[50].getId(), resourceElements[50].getChannelName().c_str());
+    //printf("ID=%d : %s\n", resourceElements[50].getId(), resourceElements[50].getChannelName().c_str());
 }
 
-void PRB::draw(sf::RenderWindow& window) {
+void PRB::draw(sf::RenderWindow& window, sf::View& view) {
 
 
     // Load font
@@ -24,7 +24,6 @@ void PRB::draw(sf::RenderWindow& window) {
     if (!font.loadFromFile("Aloevera.ttf")) {
         printf("Font not available");
     } 
-    sf::View view = window.getDefaultView();
     // Current view bounderies 
     sf::FloatRect viewBounds(view.getCenter() - view.getSize() / 2.f, view.getSize());
 
@@ -48,10 +47,17 @@ int PRB::getId() const {
     return this->id;
 }
 
+int PRB::getSlot() const {
+    return this->slot;
+}
+
 sf::Vector2f PRB::getPosition() const {
     return sf::Vector2f(0, 0);
 }
 
 sf::FloatRect PRB::getBounds() const {
-    return sf::FloatRect();
+    sf::Vector2f position = this->resourceElements[0].getPosition(); 
+    sf::Vector2f size = {this->resourceElements[0].getSize() * 14.0f, 
+        this->resourceElements[0].getSize() * 12.0f};
+    return sf::FloatRect(position, size);
 }

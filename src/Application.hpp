@@ -5,10 +5,13 @@
 #include "PRB.hpp"
 #include "EventManager.hpp"
 #include <vector>
+#include "parser/Parser.hpp"
+#include <memory>
 
 class Application {
     public:
         Application();
+        void setParser(std::string filePath);
         void run();
     private:
         void handleEvents();
@@ -24,6 +27,7 @@ class Application {
         bool isDragging = false;
         sf::Vector2f lastMousePosition;
         const float moveThreshold = 5.0f;
+        std::unique_ptr<Parser> parser;
 };
 
 #endif // APPLICATION_HPP
